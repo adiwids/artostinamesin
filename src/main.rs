@@ -2,6 +2,8 @@ extern crate rpassword;
 use std::io;
 use std::io::Write;
 use rpassword::read_password;
+use std::fs::File;
+use std::io::prelude::*;
 
 fn main() {
   print_banner();
@@ -21,9 +23,16 @@ fn main() {
   io::stdout().flush().unwrap();
   let mut choosen = String::new();
   io::stdin().read_line(&mut choosen).expect("ATM Error!");
+  print_separator();
 
   println!("Your PIN is {:?}", card_pin);
   println!("Menu {:?} choosed", choosen);
+
+  let mut f_handler = File::open(format!("{}.txt", card_number)).expect("Card invalid!");
+  let mut card_info = String::new();
+  f_handler.read_to_string(&mut card_info).expect("Something went wrong with file.");
+
+  println!("Info {:?} ", card_info);
 }
 
 fn print_banner(){
