@@ -1,0 +1,7 @@
+[package]
+name = "artostinamesin"
+version = "0.1.0"
+authors = ["Adi Widyawan <adi.widyawan@bocistudio.com>"]
+
+[dependencies]
+rpassword="0.0.4"
